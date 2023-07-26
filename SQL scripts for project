@@ -42,7 +42,7 @@ FROM portfolioProject1..jordan
 
 
 
---  DATA VISUALIZATION #1 - next lets find the average total FG percentage and not include any games where no shots were taken to avoid dividing by zero
+--  DATA  #1 - next lets find the average total FG percentage and not include any games where no shots were taken to avoid dividing by zero
 
 SELECT player, SUM(fga) AS total_attempted, SUM(fg) AS total_made, AVG(CASE WHEN fga = 0 THEN NULL ELSE fg / fga END) * 100 AS average_fg_percent
 FROM (
@@ -54,7 +54,7 @@ FROM (
 ) AS subquery
 GROUP BY player;
 
--- DATA VISUALIZATION #2 for a more specific analysis of their shooting lets see how many games each player made UNDER AND OVER 50% shooting meaning they missed more than they scored Using the CASE and WHEN  and COUNT function .
+-- DATA  #2 for a more specific analysis of their shooting lets see how many games each player made UNDER AND OVER 50% shooting meaning they missed more than they scored Using the CASE and WHEN  and COUNT function .
 
 
 SELECT player,
@@ -70,7 +70,7 @@ FROM (
 GROUP BY player;
 
 
---DATA VISUALIZATION #3 next lets find the average  shooting percentage and how much they shot. and account to not include any games where 0 shots were taken 
+--DATA  #3 next lets find the average  shooting percentage and how much they shot. and account to not include any games where 0 shots were taken 
 
 SELECT player, SUM(threeatt) AS total_attempted, SUM(three) AS total_made, AVG(CASE WHEN threeatt = 0 THEN NULL ELSE three / threeatt END) * 100 AS average_three_percent -- the sum and avg functions calculate for each collumn.
 FROM (
@@ -83,7 +83,7 @@ FROM (
 GROUP BY player;
 
 
--- DATA VISUALIZATION #4 lets see how many games they shot less than thirty percent and there are times where there is no three point attempt so to avoid dividing by zero we add anoither CASE to account for the zero.
+-- DATA  #4 lets see how many games they shot less than thirty percent and there are times where there is no three point attempt so to avoid dividing by zero we add anoither CASE to account for the zero.
   
 SELECT player,
     COUNT(CASE WHEN CASE WHEN threeatt = 0 THEN 0 ELSE three / threeatt END < 0.30 THEN 1 END) AS games_under_thirty,
