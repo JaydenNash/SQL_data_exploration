@@ -1,5 +1,11 @@
---first i select the tables i want to compare
 
+PLEASE VIEW READ ME FOR ALL IMAGES RELATING TO PROJECT
+
+
+
+
+
+--first i select the tables i want to compare
 
 Select *
 From portfolioProject1..lebroncareer
